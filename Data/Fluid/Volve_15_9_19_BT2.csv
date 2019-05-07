@@ -1,0 +1,3 @@
+Section (in);Type;Density (s.g.);3 rpm;6 rpm;30 rpm;60 rpm;100 rpm;200 rpm;300 rpm;600 rpm;Gel strength 10 s (Pa);Gel strength 10 min (Pa);Oil/water ratio (%)
+8.5;oil-based;1.52;9;12;18;24;32;48;61;99;5;8;70/30
+6;oil-based;1.4;9;10;15;20;26;37;47;74;7;14;70/30

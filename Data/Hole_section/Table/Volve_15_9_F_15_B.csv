@@ -1,0 +1,6 @@
+Type;ID (in);OD (in);From depth (m);To depth (m)
+riser;19.166;21;0;146
+casing;28;30;146;221
+casing;18.73;20;146;1368
+casing;12.347;13.375;146;2562
+open hole;NaN;8.5;2562;3497

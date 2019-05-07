@@ -1,0 +1,16 @@
+Type;Length (m);OD (in);ID (in);Lin. weight (kg/m)
+Bit;0.28;8.5;0.9465;179.9
+Steerable rotary tool;2.17;6.8125;2;180.8
+Stabilizer;2.49;7;3;144.8
+MWD;2.22;7;3;80.1
+MWD;6.72;7;3;134.7
+Stabilizer;2.47;7;3;144.8
+LWD;7.49;6.75;3;176.5
+Stabilizer;1.29;7;3;144.8
+PWD;9.95;6.75;3;148.8
+Stabilizer;1.52;6.5;2.8125;144.8
+Float sub;0.9;6.25;2.8125;165.2
+HW drillpipe;40.64;5.5;3.875;77.8
+Jar;10.99;6.5;2.75;88.4
+HW drillpipe;81.3;5.5;3.875;77.8
+Drillpipe;2606;5;4.267;29

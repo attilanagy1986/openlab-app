@@ -1,0 +1,12 @@
+Type;Length (m);OD (in);ID (in) / TFA (in2);Lin. weight (kg/m)
+Bit;0.4;12.25;1.208;231.5
+Steerable rotary tool;2.52;9.5;3;233.8
+MWD;2.22;9.5;3;137.5
+Stabilizer;2.99;9.5;3.125;295.1
+MWD;7.01;9.5;3;231.5
+Stabilizer;2.34;8.25;2.875;233.8
+Float sub;0.54;8.25;3;165.2
+HW drillpipe;27.14;6.625;4;127.2
+Jar;9.69;8;2.75;186
+HW drillpipe;167.71;6.625;4;127.2
+Drillpipe;2554;5.5;4.67;36.8
