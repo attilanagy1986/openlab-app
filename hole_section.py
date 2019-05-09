@@ -7,7 +7,7 @@ import pandas as pd
 
 from app import app
 
-
+#function to create hole section plot
 def section_plot(df):
     x=df['N/S (m)'].max()-df['N/S (m)'].min()
     y=df['E/W (m)'].max()-df['E/W (m)'].min()
@@ -311,9 +311,11 @@ def section_plot(df):
     fig = dict(data=data, layout=layout)
     return fig
 
+#default wellbore
 df_survey = pd.read_csv(f'Data/Hole_section/Plot/Volve_15_9_19_A.csv', sep=';', float_precision='round_trip')
 df_hsection = pd.read_csv(f'Data/Hole_section/Table/Volve_15_9_19_A.csv', sep=';', float_precision='round_trip')
 
+#define hole section page layout and content
 page_layout = html.Div([
     html.H3(['Hole section']),
     html.Div(id='dropdown-output', style={'paddingBottom': '10px', 'border-bottom': '1px solid black', 'font-weight': 'bold'}),
@@ -345,6 +347,7 @@ page_layout = html.Div([
             )
 ])
 
+#callback to update table according to wellbore selection
 @app.callback(
     Output('hsection-table', 'data'),
     [Input('wells-dropdown', 'value')]
@@ -354,6 +357,7 @@ def display_hsection_table(val):
     data=df_hsection.to_dict("rows")
     return data
 
+#callback to update plot according to wellbore selection
 @app.callback(
     Output('hsection-graph', 'figure'),
     [Input('wells-dropdown', 'value')]

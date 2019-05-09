@@ -7,7 +7,7 @@ import pandas as pd
 
 from app import app
 
-
+#function to create geopressures plot
 def pressure_plot(df):
     trace0 = go.Scatter(
         x=df['Pore pressure (s.g.)'],
@@ -101,8 +101,10 @@ def pressure_plot(df):
     fig = go.Figure(data=data,layout=layout)
     return fig
 
+#default wellbore
 df_geopressures = pd.read_csv(f'Data/Geopressures/Volve_15_9_19_A.csv', sep=';', float_precision='round_trip')
 
+#define geopressures page layout and content
 page_layout = html.Div([
     html.H3(['Geopressures']),
     html.Div(id='dropdown-output', style={'paddingBottom': '10px', 'border-bottom': '1px solid black', 'font-weight': 'bold'}),
@@ -138,7 +140,7 @@ page_layout = html.Div([
 ])], style={'display': 'inline-block', 'paddingTop': '50px', 'paddingLeft': '150px'})
 ])])])
 
-
+#callback to update table according to wellbore selection
 @app.callback(
     Output('geopressures-table', 'data'),
     [Input('wells-dropdown', 'value')]
@@ -148,7 +150,7 @@ def display_geopressures_table(val):
     data=df_geopressures.to_dict("rows")
     return data
 
-
+#callback to update plot according to wellbore selection
 @app.callback(
     Output('geopressures-graph', 'figure'),
     [Input('wells-dropdown', 'value')]

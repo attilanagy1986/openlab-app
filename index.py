@@ -12,7 +12,7 @@ import geopressures
 import geothermal
 import open_lab
 
-
+#wellbores for dropdown selection
 wells_dict = {
             '15_9_19_A': '15/9-19 A',
             '15_9_19_B': '15/9-19 B',
@@ -41,6 +41,7 @@ wells_dict = {
             '15_9_F_15_D': '15/9-F-15 D'
             }
 
+#define app layout
 app.layout = html.Div([
     dcc.Location(id='url'),
     dcc.Link(
@@ -128,7 +129,7 @@ app.layout = html.Div([
     html.Div(id='page-content')
 ], style={'font-family': 'Calibri', 'paddingLeft':'25px', 'paddingRight':'25px'})
 
-
+#callback to update page content
 @app.callback(
     Output('page-content', 'children'),
     [Input('url', 'pathname')]
@@ -151,7 +152,7 @@ def populate_content(url):
     elif url == '/openlab':
         return open_lab.page_layout
 
-
+#callback for mulltipage persistence of the wellbore dropdown
 @app.callback(
     Output('external-page-wells', 'style'),
     [Input('url', 'pathname')]
@@ -162,7 +163,7 @@ def hide_external(url):
     else:
         return {'display': 'none'}
 
-
+#callback to display the selected wellbore name
 @app.callback(
     Output('dropdown-output', 'children'),
     [Input('wells-dropdown', 'value')]
@@ -171,6 +172,6 @@ def display_dropdown_contents(val):
     if val:
         return f'Wellbore selected: {wells_dict[val]}'
 
-
+#run the app
 if __name__ == '__main__':
     app.run_server()

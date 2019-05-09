@@ -7,7 +7,7 @@ import pandas as pd
 
 from app import app
 
-
+#function to create temperature plot
 def temp_plot(df):
     trace1 = go.Scatter(
         x=df['Temperature (degC)'],
@@ -56,9 +56,11 @@ def temp_plot(df):
     fig = go.Figure(data=data,layout=layout)
     return fig
 
+#default wellbore
 df_geothermal = pd.read_csv(f'Data/Geothermal/Plot/Volve_15_9_19_A.csv', sep=';', float_precision='round_trip')
 df_geothermal_table = pd.read_csv(f'Data/Geothermal/Table/Volve_15_9_19_A.csv', sep=';', float_precision='round_trip')
 
+#define geothermal page layout and content
 page_layout = html.Div([
     html.H3(['Geothermal']),
     html.Div(id='dropdown-output', style={'paddingBottom': '10px', 'border-bottom': '1px solid black', 'font-weight': 'bold'}),
@@ -87,7 +89,7 @@ page_layout = html.Div([
             )
 ])
 
-
+#callback to update table according to wellbore selection
 @app.callback(
     Output('geothermal-table', 'data'),
     [Input('wells-dropdown', 'value')]
@@ -97,7 +99,7 @@ def display_geothermal_table(val):
     data=df_geothermal_table.to_dict("rows")
     return data
 
-
+#callback to update plot according to wellbore selection
 @app.callback(
     Output('geothermal-graph', 'figure'),
     [Input('wells-dropdown', 'value')]

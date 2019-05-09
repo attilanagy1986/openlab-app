@@ -7,7 +7,7 @@ import pandas as pd
 
 from app import app
 
-
+#function to create wellpath plot
 def wellpath_plot(df):
     x=df['N/S (m)'].max()-df['N/S (m)'].min()
     y=df['E/W (m)'].max()-df['E/W (m)'].min()
@@ -218,8 +218,10 @@ def wellpath_plot(df):
     fig = dict(data=data, layout=layout)
     return fig
 
+#default wellbore
 df_survey = pd.read_csv(f'Data/Wellpath/Volve_15_9_19_A.csv', sep=';', float_precision='round_trip')
 
+#define wellpath page layout and content
 page_layout = html.Div([
     html.H3(['Wellpath']),
     html.Div(id='dropdown-output', style={'paddingBottom': '10px', 'border-bottom': '1px solid black', 'font-weight': 'bold'}),
@@ -252,7 +254,7 @@ page_layout = html.Div([
             )
 ])
 
-
+#callback to update table according to wellbore selection
 @app.callback(
     Output('wellpath-table', 'data'),
     [Input('wells-dropdown', 'value')]
@@ -262,7 +264,7 @@ def display_wellpath_table(val):
     data=df_survey[['MD (m RKB)', 'Inc (deg)', 'Azim (deg)', 'TVD (m RKB)', 'DLS (deg/30m)']].to_dict("rows")
     return data
 
-
+#callback to update plot according to wellbore selection
 @app.callback(
     Output('wellpath-graph', 'figure'),
     [Input('wells-dropdown', 'value')]

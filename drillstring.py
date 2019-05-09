@@ -7,9 +7,10 @@ import pandas as pd
 
 from app import app
 
-
+#default wellbore section
 df_drillstring = pd.read_csv('Data/Drillstring/Volve_15_9_19_A_8_5.csv', sep=';', float_precision='round_trip')
 
+#define drillstring page layout and content
 page_layout = html.Div([
     html.H3(['Drillstring']),
     html.Div(id='dropdown-output', style={'paddingBottom': '10px', 'font-weight': 'bold', 'border-bottom': '1px solid black'}),
@@ -32,7 +33,7 @@ page_layout = html.Div([
     )], style={'width':'50%', 'paddingTop':'25px'})
 ])
 
-
+#update dropdown according to wellbore selection
 @app.callback(
     Output('drillstring-dropdown', 'options'),
     [Input('wells-dropdown', 'value')]
@@ -71,7 +72,7 @@ def change_drillstring_dropdown(val):
         options=[{'label':str(drillstring_options[i])+' in section', 'value':str(drillstring_options[i]).replace('.', '_')} for i in range(len(drillstring_options))]
         return options
 
-
+# update table according to wellbore and hole section selection
 @app.callback(
     Output('drillstring-table', 'data'),
     [Input('wells-dropdown', 'value'), Input('drillstring-dropdown', 'value')]
@@ -81,7 +82,7 @@ def display_drillstring_table(val1, val2):
     data=df_drillstring.to_dict("rows")
     return data
 
-
+#hide table until selection is made
 @app.callback(
             Output('table-container', 'style'),
             [Input('drillstring-dropdown', 'value')]

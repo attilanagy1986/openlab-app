@@ -7,9 +7,10 @@ import pandas as pd
 
 from app import app
 
-
+#default wellbore
 df_fluid = pd.read_csv('Data/Fluid/Volve_15_9_19_A.csv', sep=';', float_precision='round_trip')
 
+#define fluid page layout and content
 page_layout = html.Div([
     html.H3(['Fluid']),
     html.Div(id='dropdown-output', style={'paddingBottom': '10px', 'border-bottom': '1px solid black', 'font-weight': 'bold'}),
@@ -24,6 +25,8 @@ page_layout = html.Div([
     )], style={'paddingTop': '10px', 'width':'50%'})
 ])
 
+
+#update table according to wellbore selection
 @app.callback(
     Output('fluid-table', 'data'),
     [Input('wells-dropdown', 'value')]

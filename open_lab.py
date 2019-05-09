@@ -7,6 +7,7 @@ import openlab
 
 from app import app
 
+#wellbores for dropdown selection
 well_dict = {
             '15_9_19_A': '15/9-19 A',
             '15_9_19_B': '15/9-19 B',
@@ -35,7 +36,7 @@ well_dict = {
             '15_9_F_15_D': '15/9-F-15 D'
             }
 
-
+#define openlab page layout
 page_layout = html.Div([
     html.H3(['Create a well configuration in OpenLab Drilling Simulator']),
     html.Div(['Choose a wellbore and a hole section'], style={'paddingBottom':'10px'}),
@@ -72,6 +73,7 @@ page_layout = html.Div([
     html.Div(id='text-output')
 ])
 
+#update hole section dropdown according to wellbore selection
 @app.callback(
     Output('section-dropdown', 'options'),
     [Input('wellbore-dropdown', 'value')]
@@ -110,6 +112,7 @@ def change_section_dropdown(val):
         options=[{'label':str(section_options[i])+' in section', 'value':str(section_options[i]).replace('.', '_')} for i in range(len(section_options))]
         return options
 
+#create configuration in OpenLab
 @app.callback(
     Output('text-output', 'children'),
     [Input('create-button', 'n_clicks')],
